@@ -1,0 +1,108 @@
+First time build
+·················
+$ meson build
+$ cd build
+$ ninja
+
+Build, install and run the app with debug messages in one line
+..............................................................
+$ sudo ninja install && env G_MESSAGES_DEBUG=all com.github.spheras.desktopfolder
+
+
+Use debugger suite
+..................
+Nemiver is GNOME's GUI debugger. It can be really useful for locating the source of crashes and bugs.
+$ sudo apt install nemiver
+
+After installing use this instead of the one liner above:
+$ sudo ninja install && env G_MESSAGES_DEBUG=all nemiver com.github.spheras.desktopfolder
+
+
+Install uncrustify
+··················
+Don't use sudo apt install uncrustify!
+
+Run this one-liner to install the latest release of uncrustify:
+$ cd ~/Downloads && wget https://github.com/uncrustify/uncrustify/archive/uncrustify-0.65.tar.gz && tar -xf uncrustify-0.65.tar.gz && cd uncrustify-uncrustify-0.65/cmake/ && cmake .. && sudo make install
+
+If you want to run it step by step instead:
+$ cd ~/Downloads
+$ wget https://github.com/uncrustify/uncrustify/archive/uncrustify-0.65.tar.gz
+$ tar -xf uncrustify-0.65.tar.gz
+$ cd uncrustify-uncrustify-0.65/cmake/
+$ cmake ..
+$ sudo make install
+
+This means everyone is using the same version, so the output is consistent.
+
+
+Use uncrustify
+··············
+Go to src/ and run uncrustify like this:
+$ uncrustify --replace --no-backup -c ../etc/uncrustify-elementary-vala.cfg */*.vala *.vala
+
+Make sure you don't end comment lines with a \ (backslash), otherwise
+uncrustify turns the next line into a comment as well:
+
+    // This prints a \
+    my_function ();
+
+Gets turned into:
+
+    // This prints a
+    // my_function ();
+
+It's okay if you put any character after it though:
+
+    // This prints a \ character.
+    // (or) This prints a \.
+    my_function ();
+
+
+Show debug messages
+···················
+$ export G_MESSAGES_DEBUG=all
+
+
+Generate pot file
+·················
+$ ninja com.github.spheras.desktopfolder-pot
+
+
+Debian build
+············
+sudo apt install devscripts
+
+From root directory:
+$ debuild -uc -us
+
+(Hint) To execute rules:
+$ ./debian/rules install
+
+
+GTK Introspector
+················
+$ gsettings set org.gtk.Settings.Debug enable-inspector-keybinding true
+
+After that, press Ctrl+Shift+D or Ctrl+Shift+I on the window you want to debug.
+
+
+Snap creation
+·············
+$ sudo apt install snapcraft
+
+$ sudo docker pull snapcore/snapcraft
+$ sudo docker run -v $PWD:$PWD -w $PWD snapcore/snapcraft snapcraft
+
+Relase a new version
+····················
+https://wiki.debian.org/Creating%20signed%20GitHub%20releases
+1. tag the code (change version): $ git tag -s v1.1.2
+2. push the tag created: $ git push --tags
+3. then publish a new release into github
+4. download the .gz generated at the release
+5. sign the tarball (change version): $ gpg --armor --detach-sign desktopfolder-1.1.2.tar.gz
+6. it will create a desktopfolder-1.1.2.tar.gz.asc file
+7. Edit your release again and attach the detached signature desktopfolder-1.1.2.tar.gz.asc as binary to the release.
+8. Compile with debian at the root: $ debuild -uc -us
+9. Attach also the .dsc .tar.xz and .deb generated

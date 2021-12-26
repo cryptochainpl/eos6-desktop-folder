@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/github/spheras/desktopfolder">
+    <file alias="Application.css" compressed="true">css/Application.css</file>
+
+    <file alias="hip-square.png" compressed="true">img/hip-square.png</file>
+    <file alias="clip-blue.png" compressed="true">img/clip-blue.png</file>
+    <file alias="clip-green.png" compressed="true">img/clip-green.png</file>
+    <file alias="clip-orange.png" compressed="true">img/clip-orange.png</file>
+    <file alias="clip-pink.png" compressed="true">img/clip-pink.png</file>
+    <file alias="clip-red.png" compressed="true">img/clip-red.png</file>
+    <file alias="clip-yellow.png" compressed="true">img/clip-yellow.png</file>
+    <file alias="link.svg" compressed="true">img/link.svg</file>
+
+    <file alias="fixo-blueberry.svg" compressed="true">img/fixo-blueberry.svg</file>
+    <file alias="fixo-black.svg" compressed="true">img/fixo-black.svg</file>
+    <file alias="fixo-lime.svg" compressed="true">img/fixo-lime.svg</file>
+    <file alias="fixo-grape.svg" compressed="true">img/fixo-grape.svg</file>
+    <file alias="fixo-white.svg" compressed="true">img/fixo-white.svg</file>
+    <file alias="fixo-banana.svg" compressed="true">img/fixo-banana.svg</file>
+    <file alias="fixo-strawberry.svg" compressed="true">img/fixo-strawberry.svg</file>
+    <file alias="fixo-orange.svg" compressed="true">img/fixo-orange.svg</file>
+    <file alias="shadow.png" compressed="true">img/shadow.png</file>
+  </gresource>
+</gresources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <enum id="resolution-strategy">
+        <value value="0" nick="NONE"/>
+        <value value="1" nick="SCALE"/>
+        <value value="2" nick="STORE"/>
+    </enum>
+    <enum id="arrangement">
+        <value value="1" nick="FREE"/>
+        <value value="2" nick="GRID"/>
+        <value value="3" nick="MANAGED"/>
+    </enum>
+
+  <schema path="/com/github/spheras/desktopfolder/"
+  id="com.github.spheras.desktopfolder"
+  gettext-domain="com.github.spheras.desktopfolder">
+    <key name="icons-on-desktop" type="b">
+      <default>true</default>
+      <summary>Icons on Desktop Panel</summary>
+      <description>Whether to show icons on Desktop Panel or not</description>
+    </key>
+    <key name="desktop-panel" type="b">
+      <default>true</default>
+      <summary>Desktop Panel over Desktop</summary>
+      <description>Desktop Transparent Panel to allow desktop interaction</description>
+    </key>
+    <key name="resolution-strategy" enum="resolution-strategy">
+      <default>'STORE'</default>
+      <summary>Resolution Change Strategy</summary>
+      <description>How the widgets should be adapted to different screen resolutions</description>
+    </key>
+    <key name="default-arrangement" enum="arrangement">
+      <default>'GRID'</default>
+      <summary>Default Panel Arrangement</summary>
+      <description>Define whats the default arrangement strategy for panels</description>
+    </key>
+    <key name="default-arrangement-padding" type="i">
+      <default>10</default>
+      <summary>Default Arrangement Padding</summary>
+      <description>The Default Arrangement Padding Between Items</description>
+    </key>
+    <key name="show-desktopfolder" type="b">
+      <default>true</default>
+      <summary>Have DesktopFolder handle the desktop</summary>
+      <description>If set false, DesktopFolder will exit gracefully on startup or when running</description>
+    </key>
+  </schema>
+</schemalist>
